@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+<h1>Posts</h1>
+<div id="posts">
+  <% if @posts.any?  %>
+    <%= button_to "すべての投稿を削除", destroy_all_posts_path, method: :delete, data: { confirm: "すべての投稿を削除しますか？" } %>
+  <% end %>
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+      <%= link_to "詳細", post %>
+      <%= button_to "削除", post, method: :delete %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "新規投稿", new_post_path %>
